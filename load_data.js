@@ -238,21 +238,25 @@ var DEMOGRAPHICS_DATA = [
   ["16091", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
   ["20459", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 ];
+var load_time = 1000;
 var outBox;
 var theTable = "";
 
 function table_gen(ar) {
+  console.info('running table_gen()');
   theTable = "";
   if (debug_mode == true) {
     console.log("Starting table_gen()");
     console.log(ar);
-    console.log(ar.length);
+    console.log("table width:", ar[0].length);
+    console.log("table length:", ar.length);
   }
-  for (var j = 0; j < ar.length; j++) {
+  for (var j = 0; j < ar[0].length; j++) {
     theTable += "<tr>";
-    for (var k = 0; k < ar[0].length; k++) {
-      theTable += "<td>" + ar[k][j] + "</td>";
+    for (var k = 0; k < ar.length; k++) {
+      theTable += "<td>" + ar[j][k] + "</td>";
       if (debug_mode == true) {
+        console.info("row " + j + ", column " + k)
         // console.log(theTable);}
       }
       theTable += "</tr>";
@@ -260,11 +264,12 @@ function table_gen(ar) {
     if (debug_mode == true) {
       // console.log("theTable", theTable);
     }
-    return theTable;
   }
+  return theTable;
 }
 
-function load_database() {
+function begin_load() {
+  console.info('running begin_load()');
   $(".loader-box").html(
     '<div class="loader"><span class="bracket left">{</span><span class="bracket right">}</span></div>'
   );
@@ -295,18 +300,25 @@ function load_database() {
   //     }
   //   }
   // );
-  outBox.html('<table id="tb"></table>');
-  $("#tb").html(table_gen(DEMOGRAPHICS_DATA));
+  load_data(outBox);
+}
 
-  setTimeout(function() {
-    load_complete();
-  }, 1000);
+function load_data(outBox) {
+  console.info('running load_data()');
+  outBox.html('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
+  $(document).trigger('data_loaded');
 }
 
 function load_complete() {
+  console.info('running load_complete()');
   $(".loader").addClass("loaded");
 }
 
+document.onload = begin_load()
+
 $(document).ready(function() {
-  load_database();
+  load_complete()
 });
+
+// Set up triggers for load_complete()
+$(document).bind('data_loaded', load_complete());
