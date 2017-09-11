@@ -238,7 +238,6 @@ var DEMOGRAPHICS_DATA = [
   ["16091", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
   ["20459", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 ];
-var load_time = 1000;
 var theTable = "";
 
 function table_gen(ar) {
@@ -267,56 +266,10 @@ function table_gen(ar) {
   return theTable;
 }
 
-function begin_load() {
-  console.info('running begin_load()');
-  $(".loader-box").html(
-    '<div class="loader"><span class="bracket left">{</span><span class="bracket right">}</span></div>'
-  );
-  if (debug_mode == true) {
-    $(".loader-box").append('<span id="opacity"></span>');
-  }
-  var get_opacity = setInterval(function() {
-    var op = $(".loader").css("opacity");
-    if (debug_mode == true) {
-      $("#opacity").html("Current opacity: " + op);
-    }
-    if (op == 0) {
-      $(".loader-box").remove();
-      $(".output-box").removeClass("out");
-      $(".output-box").addClass("in");
-      clearInterval(get_opacity);
-    }
-  }, 5);
-  // $.get(
-  //   "https://raw.githubusercontent.com/dealien/data/master/test.txt",
-  //   function(data) {
-  //     DEMOGRAPHICS_DATA = data.split("\n");
-  //     if (debug_mode == true) {
-  //       console.log("loaded data", DEMOGRAPHICS_DATA);
-  //       console.log(Array.isArray(DEMOGRAPHICS_DATA));
-  //       $("#tb").html(table_gen(DEMOGRAPHICS_DATA));
-  //     }
-  //   }
-  // );
-  load_data();
-}
-
 function load_data() {
   console.info('running load_data()');
-  $(".output-box").html('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
+  $(".output-box").append('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
   $(document).trigger('data_loaded');
 }
 
-function load_complete() {
-  console.info('running load_complete()');
-  $(".loader").addClass("loaded");
-}
-
-document.onload = begin_load()
-
-$(document).ready(function() {
-  load_complete()
-});
-
-// Set up triggers for load_complete()
-$(document).bind('data_loaded', load_complete());
+document.onload = load_data()
