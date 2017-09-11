@@ -239,7 +239,6 @@ var DEMOGRAPHICS_DATA = [
   ["20459", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 ];
 var load_time = 1000;
-var outBox;
 var theTable = "";
 
 function table_gen(ar) {
@@ -276,7 +275,6 @@ function begin_load() {
   if (debug_mode == true) {
     $(".loader-box").append('<span id="opacity"></span>');
   }
-  var outBox = $(".output-box");
   var get_opacity = setInterval(function() {
     var op = $(".loader").css("opacity");
     if (debug_mode == true) {
@@ -284,8 +282,8 @@ function begin_load() {
     }
     if (op == 0) {
       $(".loader-box").remove();
-      outBox.removeClass("out");
-      outBox.addClass("in");
+      $(".output-box").removeClass("out");
+      $(".output-box").addClass("in");
       clearInterval(get_opacity);
     }
   }, 5);
@@ -300,12 +298,12 @@ function begin_load() {
   //     }
   //   }
   // );
-  load_data(outBox);
+  load_data();
 }
 
-function load_data(outBox) {
+function load_data() {
   console.info('running load_data()');
-  outBox.html('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
+  $(".output-box").html('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
   $(document).trigger('data_loaded');
 }
 
