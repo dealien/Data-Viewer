@@ -3,7 +3,7 @@ var students;
 var theTable = "";
 
 function table_gen(ar) {
-  theTable = "";
+  theTable = "<table>";
   if (debug_mode == true) {
     console.info('running table_gen()');
     console.log(ar);
@@ -16,7 +16,7 @@ function table_gen(ar) {
       theTable += "<td>" + ar[j][k] + "</td>";
       if (debug_mode == true) {
         console.info("row " + j + ", column " + k)
-        // console.log(theTable);}
+        // console.log(theTable);
       }
       theTable += "</tr>";
     }
@@ -24,16 +24,17 @@ function table_gen(ar) {
       // console.log("theTable", theTable);
     }
   }
+  theTable += "</table>"
   return theTable;
 }
 
-function load_data(data) {
+function load_data() {
   console.log("students", students);
-  console.log("data", data);
+  $("output-box").html(table_gen(students.age))
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
   console.log(loaded_data);
   students = loaded_data;
-  load_data(loaded_data);
+  load_data();
 });
