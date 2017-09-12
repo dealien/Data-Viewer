@@ -238,21 +238,23 @@ var DEMOGRAPHICS_DATA = [
   ["16091", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
   ["20459", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 ];
-var outBox;
 var theTable = "";
 
 function table_gen(ar) {
+  console.info('running table_gen()');
   theTable = "";
   if (debug_mode == true) {
     console.log("Starting table_gen()");
     console.log(ar);
-    console.log(ar.length);
+    console.log("table width:", ar[0].length);
+    console.log("table length:", ar.length);
   }
-  for (var j = 0; j < ar.length; j++) {
+  for (var j = 0; j < ar[0].length; j++) {
     theTable += "<tr>";
-    for (var k = 0; k < ar[0].length; k++) {
-      theTable += "<td>" + ar[k][j] + "</td>";
+    for (var k = 0; k < ar.length; k++) {
+      theTable += "<td>" + ar[j][k] + "</td>";
       if (debug_mode == true) {
+        console.info("row " + j + ", column " + k)
         // console.log(theTable);}
       }
       theTable += "</tr>";
@@ -260,53 +262,14 @@ function table_gen(ar) {
     if (debug_mode == true) {
       // console.log("theTable", theTable);
     }
-    return theTable;
   }
+  return theTable;
 }
 
-function load_database() {
-  $(".loader-box").html(
-    '<div class="loader"><span class="bracket left">{</span><span class="bracket right">}</span></div>'
-  );
-  if (debug_mode == true) {
-    $(".loader-box").append('<span id="opacity"></span>');
-  }
-  var outBox = $(".output-box");
-  var get_opacity = setInterval(function() {
-    var op = $(".loader").css("opacity");
-    if (debug_mode == true) {
-      $("#opacity").html("Current opacity: " + op);
-    }
-    if (op == 0) {
-      $(".loader-box").remove();
-      outBox.removeClass("out");
-      outBox.addClass("in");
-      clearInterval(get_opacity);
-    }
-  }, 5);
-  // $.get(
-  //   "https://raw.githubusercontent.com/dealien/data/master/test.txt",
-  //   function(data) {
-  //     DEMOGRAPHICS_DATA = data.split("\n");
-  //     if (debug_mode == true) {
-  //       console.log("loaded data", DEMOGRAPHICS_DATA);
-  //       console.log(Array.isArray(DEMOGRAPHICS_DATA));
-  //       $("#tb").html(table_gen(DEMOGRAPHICS_DATA));
-  //     }
-  //   }
-  // );
-  outBox.html('<table id="tb"></table>');
-  $("#tb").html(table_gen(DEMOGRAPHICS_DATA));
-
-  setTimeout(function() {
-    load_complete();
-  }, 1000);
+function load_data() {
+  console.info('running load_data()');
+  $(".output-box").append('<table id="tb">' + table_gen(DEMOGRAPHICS_DATA) + '</table>');
+  $(document).trigger('data_loaded');
 }
 
-function load_complete() {
-  $(".loader").addClass("loaded");
-}
-
-$(document).ready(function() {
-  load_database();
-});
+document.onload = load_data()
