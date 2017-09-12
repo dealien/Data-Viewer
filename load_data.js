@@ -3,9 +3,9 @@ var students;
 var theTable = "";
 
 function table_gen(ar) {
-  theTable = "<table>";
+  theTable = "<table class='data-table'>";
   if (debug_mode == true) {
-    console.info('running table_gen()');
+    console.info("running table_gen()");
     console.time("time to load");
     console.log(ar);
     console.log("table width:", ar[0].length);
