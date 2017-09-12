@@ -35,6 +35,9 @@ function table_gen(ar, headers = null) {
   }
   theTable += "</table>"
   console.timeEnd("time to load");
+  if (debug_mode == true) {
+    console.log(theTable);
+  }
   return theTable;
 }
 
