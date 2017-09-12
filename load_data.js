@@ -6,7 +6,7 @@ function table_gen(ar) {
   theTable = "<table>";
   if (debug_mode == true) {
     console.info('running table_gen()');
-    console.time("table load");
+    console.time("time to load");
     console.log(ar);
     console.log("table width:", ar[0].length);
     console.log("table length:", ar.length);
@@ -26,7 +26,7 @@ function table_gen(ar) {
     }
   }
   theTable += "</table>"
-  console.timeEnd("table load");
+  console.timeEnd("time to load");
   return theTable;
 }
 
