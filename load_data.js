@@ -12,7 +12,7 @@ function table_gen(ar, headers = null) {
 
   if (headers !== null) {
     theTable += "<tr>";
-    for (var j = 0; j < ar.length; j++) {
+    for (var j = 0; j < ar[0].length; j++) {
       theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
     }
     theTable += "</tr>";
