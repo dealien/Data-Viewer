@@ -32,22 +32,7 @@ function table_gen(orientation = "vertical", ar, headers = null) {
       }
       theTable += "</tr>";
     }
-  } else if (orientation == "vertical") {
-    for (var k = 0; k < ar[0].length; j++) {
-      theTable += "<tr>";
-      for (var j = 0; j < ar.length; k++) {
-        if (headers !== null) {
-          theTable += "<td id='" + headers[1][j] + "'>" + ar[k][j] + "</td>";
-        } else {
-          theTable += "<td>" + ar[k][j] + "</td>";
-        }
-        console.info("row " + k + ", column " + j)
-      }
-      theTable += "</tr>";
-    }
-  } else {
-    console.error('ERROR: Improper orientation "' + orientation + '"');
-    return;
+    theTable += "</tr>";
   }
 
   theTable += "</table>"
