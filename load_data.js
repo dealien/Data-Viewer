@@ -11,5 +11,3 @@ document.onload = $.getJSON("student_data.json", function(loaded_data) {
     console.log(loaded_data);
   students = loaded_data;
 load_data(loaded_data);});
-
-
