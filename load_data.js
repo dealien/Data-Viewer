@@ -37,9 +37,9 @@ function table_gen(orientation = "vertical", ar, headers = null) {
       theTable += "<tr>";
       for (var j = 0; j < ar.length; k++) {
         if (headers !== null) {
-          theTable += "<td id='" + headers[1][j] + "'>" + ar[k][j] + "</td>";
+          theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
         } else {
-          theTable += "<td>" + ar[k][j] + "</td>";
+          theTable += "<td>" + ar[j][k] + "</td>";
         }
         console.info("row " + k + ", column " + j)
       }
