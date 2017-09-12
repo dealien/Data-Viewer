@@ -27,7 +27,7 @@ function table_gen(ar, headers = null) {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
       console.group();
-      console.info("row " + j + ", column " + k);
+      console.info("row " + (j + 1) + ", column " + (k + 1));
       console.info(ar[j][k]);
       console.groupEnd();
     }
