@@ -8,7 +8,7 @@ function table_gen(ar, headers = null) {
   console.time("time to load");
   console.log(ar);
   console.info("table width:", ar[0].length);
-  console.info("table length:", ar.length);
+  console.info("table height:", ar.length);
 
   if (headers !== null) {
     theTable += "<tr>";
