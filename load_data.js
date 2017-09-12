@@ -4,13 +4,12 @@ var theTable = "";
 
 function table_gen(ar, headers = null) {
   theTable = "<table class='data-table'>";
-  if (debug_mode == true) {
-    console.info("running table_gen()");
-    console.time("time to load");
-    console.log(ar);
-    console.log("table width:", ar[0].length);
-    console.log("table length:", ar.length);
-  }
+  console.info("running table_gen()");
+  console.time("time to load");
+  console.log(ar);
+  console.info("table width:", ar[0].length);
+  console.info("table length:", ar.length);
+
   for (var j = 0; j < ar.length; j++) {
     if (headers !== null) {
       theTable += "<tr><th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th></tr><tr>";
@@ -23,21 +22,14 @@ function table_gen(ar, headers = null) {
       } else {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
-      if (debug_mode == true) {
-        console.info("row " + (j + 1) + ", column " + (k + 1))
-        // console.log(theTable);
-      }
-      theTable += "</tr>";
+      console.info("row " + j + ", column " + k)
     }
-    if (debug_mode == true) {
-      // console.log("theTable", theTable);
-    }
+    theTable += "</tr>";
   }
+
   theTable += "</table>"
   console.timeEnd("time to load");
-  if (debug_mode == true) {
-    console.log(theTable);
-  }
+  console.log(theTable);
   return theTable;
 }
 
