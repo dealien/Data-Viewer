@@ -14,7 +14,7 @@ function table_gen(ar, headers = null) {
   for (var j = 0; j < ar.length; j++) {
     theTable += "<tr>";
     if (headers !== null) {
-      theTable += "<td>" + headers[j] + "</td>";
+      theTable += headers[j] + "</tr><tr>";
     }
     for (var k = 0; k < ar[0].length; k++) {
       theTable += "<td>" + ar[j][k] + "</td>";
