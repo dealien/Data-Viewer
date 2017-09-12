@@ -43,7 +43,7 @@ function table_gen(ar, headers = null) {
 
 function load_data() {
   console.log("students", students);
-  $(".output-box").html(table_gen(students.age, students.headers))
+  $(".output-box").html(table_gen(students.data, students.headers))
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
