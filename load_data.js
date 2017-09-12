@@ -4,34 +4,54 @@ var theTable = "";
 
 function table_gen(ar, headers = null) {
   theTable = "<table class='data-table'>";
+  var length = ar.length;
+  var width = ar[0].length;
   console.info("running table_gen()");
   console.time("time to load");
   console.log(ar);
-  console.info("table width:", ar[0].length);
-  console.info("table height:", ar.length);
+  console.info("table width:", width);
+  console.info("table height:", length);
 
   if (headers !== null) {
     theTable += "<tr>";
-    for (var j = 0; j < ar[0].length; j++) {
+    for (var j = 0; j < width; j++) {
       theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
     }
     theTable += "</tr>";
   }
 
-  for (var j = 0; j < ar.length; j++) {
-    theTable += "<tr>";
-    for (var k = 0; k < ar[0].length; k++) {
-      if (headers !== null) {
-        theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
-      } else {
-        theTable += "<td>" + ar[j][k] + "</td>";
+  if (headers.length = width) {
+    for (var j = 0; j < length; j++) {
+      theTable += "<tr>";
+      for (var k = 0; k < width; k++) {
+        if (headers !== null) {
+          theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
+        } else {
+          theTable += "<td>" + ar[j][k] + "</td>";
+        }
+        console.group();
+        console.info("row " + (j + 1) + ", column " + (k + 1));
+        console.info(ar[j][k]);
+        console.groupEnd();
       }
-      console.group();
-      console.info("row " + (j + 1) + ", column " + (k + 1));
-      console.info(ar[j][k]);
-      console.groupEnd();
+      theTable += "</tr>";
     }
-    theTable += "</tr>";
+  } else {
+    for (var j = 0; j < width; j++) {
+      theTable += "<tr>";
+      for (var k = 0; k < length; k++) {
+        if (headers !== null) {
+          theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
+        } else {
+          theTable += "<td>" + ar[k][j] + "</td>";
+        }
+        console.group();
+        console.info("row " + (k + 1) + ", column " + (j + 1));
+        console.info(ar[k][j]);
+        console.groupEnd();
+      }
+      theTable += "</tr>";
+    }
   }
 
   theTable += "</table>";
