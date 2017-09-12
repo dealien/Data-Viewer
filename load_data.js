@@ -26,12 +26,12 @@ function table_gen(ar, headers = null) {
       } else {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
-      console.info("row " + j + ", column " + k)
+      console.info("row " + j + ", column " + k);
     }
     theTable += "</tr>";
   }
 
-  theTable += "</table>"
+  theTable += "</table>";
   console.timeEnd("time to load");
   console.log(theTable);
   return theTable;
@@ -39,7 +39,7 @@ function table_gen(ar, headers = null) {
 
 function load_data() {
   console.log("students", students);
-  $(".output-box").html(table_gen(students.data, students.headers))
+  $(".output-box").html(table_gen(students.data, students.headers));
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
