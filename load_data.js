@@ -4,13 +4,13 @@ var theTable = "";
 
 function table_gen(ar, headers = null) {
   theTable = "<table class='data-table'>";
-  var length = ar.length;
+  var height = ar.length;
   var width = ar[0].length;
   console.info("running table_gen()");
   console.time("time to load");
   console.log(ar);
   console.info("table width:", width);
-  console.info("table height:", length);
+  console.info("table height:", height);
   console.info("header count:", headers.length);
 
   if (headers !== null) {
@@ -23,7 +23,7 @@ function table_gen(ar, headers = null) {
 
   if (headers.length == width) {
     console.info("horizontal data format");
-    for (var j = 0; j < length; j++) {
+    for (var j = 0; j < height; j++) {
       theTable += "<tr>";
       for (var k = 0; k < width; k++) {
         if (headers !== null) {
@@ -40,17 +40,17 @@ function table_gen(ar, headers = null) {
     }
   } else {
     console.info("vertical data format");
-    for (var j = 0; j < width; j++) {
+    for (var j = 0; j < height; j++) {
       theTable += "<tr>";
-      for (var k = 0; k < length; k++) {
+      for (var k = 0; k < width; k++) {
         if (headers !== null) {
-          theTable += "<td id='" + headers[0][j] + "'>" + ar[j][k] + "</td>";
+          theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
         } else {
-          theTable += "<td>" + ar[j][k] + "</td>";
+          theTable += "<td>" + ar[k][j] + "</td>";
         }
         console.group();
         console.info("row " + (k + 1) + ", column " + (j + 1));
-        console.info(ar[j][k]);
+        console.info(ar[k][j]);
         console.groupEnd();
       }
       theTable += "</tr>";
