@@ -6,8 +6,8 @@ function load_data() {
   
 }
 
-document.onload = $.getJSON("student_data.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
+document.onload = $.getJSON("student_data.json", function(loaded_data) {
+    console.log(loaded_data); // this will show the info it in firebug console
 load_data();});
 
 
