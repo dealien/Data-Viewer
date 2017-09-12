@@ -33,15 +33,15 @@ function table_gen(orientation = "vertical", ar, headers = null) {
       theTable += "</tr>";
     }
   } else if (orientation == "vertical") {
-    for (var k = 0; k < ar[0].length; j++) {
+    for (var j = 0; j < ar.length; j++) {
       theTable += "<tr>";
-      for (var j = 0; j < ar.length; k++) {
+      for (var k = 0; k < ar[0].length; k++) {
         if (headers !== null) {
           theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
         } else {
           theTable += "<td>" + ar[j][k] + "</td>";
         }
-        console.info("row " + k + ", column " + j)
+        console.info("row " + j + ", column " + k)
       }
       theTable += "</tr>";
     }
