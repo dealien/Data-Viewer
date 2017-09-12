@@ -1,6 +1,5 @@
 {
-  "count": 10,
-  "age": [
+  "age": [  // Age of each student in days
     6388,
     6367,
     6500,
