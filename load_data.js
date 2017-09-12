@@ -10,12 +10,16 @@ function table_gen(ar, headers = null) {
   console.info("table width:", ar[0].length);
   console.info("table length:", ar.length);
 
-  for (var j = 0; j < ar.length; j++) {
-    if (headers !== null) {
-      theTable += "<tr><th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th></tr><tr>";
-    } else {
-      theTable += "<tr>";
+  if (headers !== null) {
+    theTable += "<tr>";
+    for (var j = 0; j < ar.length; j++) {
+      theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th></tr>";
     }
+    theTable += "</tr>";
+  }
+
+  for (var j = 0; j < ar.length; j++) {
+    theTable += "<tr>";
     for (var k = 0; k < ar[0].length; k++) {
       if (headers !== null) {
         theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
