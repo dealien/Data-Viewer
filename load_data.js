@@ -26,7 +26,10 @@ function table_gen(ar, headers = null) {
       } else {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
+      console.group();
       console.info("row " + j + ", column " + k);
+      console.info(ar[j][k]);
+      console.groupEnd();
     }
     theTable += "</tr>";
   }
