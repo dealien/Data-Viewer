@@ -2,14 +2,13 @@ var debug_mode = true;
 var students;
 var theTable = "";
 
-function table_gen(orientation = "vertical", ar, headers = null) {
+function table_gen(ar, headers = null) {
   theTable = "<table class='data-table'>";
   console.info("running table_gen()");
   console.time("time to load");
   console.log(ar);
   console.info("table width:", ar[0].length);
   console.info("table length:", ar.length);
-  console.info("orientation:", orientation)
 
   if (headers !== null) {
     theTable += "<tr>";
@@ -19,18 +18,15 @@ function table_gen(orientation = "vertical", ar, headers = null) {
     theTable += "</tr>";
   }
 
-  if (orientation == "horizontal") {
-    for (var j = 0; j < ar.length; j++) {
-      theTable += "<tr>";
-      for (var k = 0; k < ar[0].length; k++) {
-        if (headers !== null) {
-          theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
-        } else {
-          theTable += "<td>" + ar[j][k] + "</td>";
-        }
-        console.info("row " + j + ", column " + k)
+  for (var j = 0; j < ar.length; j++) {
+    theTable += "<tr>";
+    for (var k = 0; k < ar[0].length; k++) {
+      if (headers !== null) {
+        theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
+      } else {
+        theTable += "<td>" + ar[j][k] + "</td>";
       }
-      theTable += "</tr>";
+      console.info("row " + j + ", column " + k)
     }
     theTable += "</tr>";
   }
@@ -43,7 +39,7 @@ function table_gen(orientation = "vertical", ar, headers = null) {
 
 function load_data() {
   console.log("students", students);
-  $(".output-box").html(table_gen(students.orientation, students.data, students.headers))
+  $(".output-box").html(table_gen(students.data, students.headers))
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
