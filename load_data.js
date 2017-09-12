@@ -14,10 +14,14 @@ function table_gen(ar, headers = null) {
   for (var j = 0; j < ar.length; j++) {
     theTable += "<tr>";
     if (headers !== null) {
-      theTable += headers[j] + "</tr><tr>";
+      theTable += headers[0][j] + "</tr><tr>";
     }
     for (var k = 0; k < ar[0].length; k++) {
-      theTable += "<td>" + ar[j][k] + "</td>";
+      if (headers !== null) {
+        theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
+      } else {
+        theTable += "<td>" + ar[j][k] + "</td>";
+      }
       if (debug_mode == true) {
         console.info("row " + (j + 1) + ", column " + (k + 1))
         // console.log(theTable);
