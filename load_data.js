@@ -6,6 +6,7 @@ function table_gen(ar) {
   theTable = "<table>";
   if (debug_mode == true) {
     console.info('running table_gen()');
+    console.time("table load");
     console.log(ar);
     console.log("table width:", ar[0].length);
     console.log("table length:", ar.length);
@@ -15,7 +16,7 @@ function table_gen(ar) {
     for (var k = 0; k < ar[0].length; k++) {
       theTable += "<td>" + ar[j][k] + "</td>";
       if (debug_mode == true) {
-        console.info("row " + j + ", column " + k)
+        console.info("row " + (j + 1) + ", column " + (k + 1))
         // console.log(theTable);
       }
       theTable += "</tr>";
@@ -25,6 +26,7 @@ function table_gen(ar) {
     }
   }
   theTable += "</table>"
+  console.timeEnd("table load");
   return theTable;
 }
 
