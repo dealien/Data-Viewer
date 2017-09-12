@@ -39,22 +39,18 @@ h1 {
 
 
 
-
-
 /* BEGIN TABLE STYLE */
 
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 
 .data-table {
   background: #34495E;
-  color: #fff;
   border-radius: .4em;
   overflow: hidden;
   padding: 0 2em;
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  background: #eee;
   margin: 1em 0;
   min-width: 300px;
 }
