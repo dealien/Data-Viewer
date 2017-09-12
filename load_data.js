@@ -67,7 +67,7 @@ function load_data() {
   $(".output-box").html(table_gen(students.data, students.headers));
 }
 
-document.onload = $.getJSON("student_data.json", function(loaded_data) {
+document.onload = $.getJSON("student_data_v.json", function(loaded_data) {
   console.log(loaded_data);
   students = loaded_data;
   load_data();
