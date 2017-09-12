@@ -1,4 +1,9 @@
 {
+  "headers": [
+    [
+      "<span class='tooltip' title='Age of each student in days'>Age</span>"
+    ]
+  ],
   "age": [
     [
       6388,
