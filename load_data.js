@@ -4,46 +4,45 @@ var theTable = "";
 
 function table_gen(ar, headers = null) {
   theTable = "<table class='data-table'>";
-  if (debug_mode == true) {
-    console.info("running table_gen()");
-    console.time("time to load");
-    console.log(ar);
-    console.log("table width:", ar[0].length);
-    console.log("table length:", ar.length);
-  }
-  for (var j = 0; j < ar.length; j++) {
-    if (headers !== null) {
-      theTable += "<tr><th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th></tr><tr>";
-    } else {
-      theTable += "<tr>";
+  console.info("running table_gen()");
+  console.time("time to load");
+  console.log(ar);
+  console.info("table width:", ar[0].length);
+  console.info("table height:", ar.length);
+
+  if (headers !== null) {
+    theTable += "<tr>";
+    for (var j = 0; j < ar[0].length; j++) {
+      theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
     }
+    theTable += "</tr>";
+  }
+
+  for (var j = 0; j < ar.length; j++) {
+    theTable += "<tr>";
     for (var k = 0; k < ar[0].length; k++) {
       if (headers !== null) {
         theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
       } else {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
-      if (debug_mode == true) {
-        console.info("row " + (j + 1) + ", column " + (k + 1))
-        // console.log(theTable);
-      }
-      theTable += "</tr>";
+      console.group();
+      console.info("row " + (j + 1) + ", column " + (k + 1));
+      console.info(ar[j][k]);
+      console.groupEnd();
     }
-    if (debug_mode == true) {
-      // console.log("theTable", theTable);
-    }
+    theTable += "</tr>";
   }
-  theTable += "</table>"
+
+  theTable += "</table>";
   console.timeEnd("time to load");
-  if (debug_mode == true) {
-    console.log(theTable);
-  }
+  console.log(theTable);
   return theTable;
 }
 
 function load_data() {
   console.log("students", students);
-  $(".output-box").html(table_gen(students.age, students.headers))
+  $(".output-box").html(table_gen(students.data, students.headers));
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
