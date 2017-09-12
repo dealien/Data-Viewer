@@ -1,1 +1,1 @@
-# Interactive Database Explorer
+# Interactive Data Explorer
