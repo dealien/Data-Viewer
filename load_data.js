@@ -10,9 +10,9 @@ function table_gen(ar) {
     console.log("table width:", ar[0].length);
     console.log("table length:", ar.length);
   }
-  for (var j = 0; j < ar[0].length; j++) {
+  for (var j = 0; j < ar.length; j++) {
     theTable += "<tr>";
-    for (var k = 0; k < ar.length; k++) {
+    for (var k = 0; k < ar[0].length; k++) {
       theTable += "<td>" + ar[j][k] + "</td>";
       if (debug_mode == true) {
         console.info("row " + j + ", column " + k)
