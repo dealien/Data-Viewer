@@ -1,10 +1,10 @@
 {
   "headers": [
     [
-      "<span class='tooltip' title='Age of each student in days'>Age</span>"
+      "Age"
     ],
     [
-      "Age"
+      "Age of each student in days"
     ]
   ],
   "age": [
