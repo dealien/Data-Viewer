@@ -22,7 +22,7 @@ function table_gen(ar, headers = null) {
     theTable += "<tr>";
     for (var k = 0; k < ar[0].length; k++) {
       if (headers !== null) {
-        theTable += "<td id='" + headers[1][j] + "'>" + ar[j][k] + "</td>";
+        theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
       } else {
         theTable += "<td>" + ar[j][k] + "</td>";
       }
