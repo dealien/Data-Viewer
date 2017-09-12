@@ -32,7 +32,7 @@ function table_gen(ar) {
 
 function load_data() {
   console.log("students", students);
-  $("output-box").html(table_gen(students.age))
+  $(".output-box").html(table_gen(students.age))
 }
 
 document.onload = $.getJSON("student_data.json", function(loaded_data) {
