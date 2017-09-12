@@ -11,6 +11,7 @@ function table_gen(ar, headers = null) {
   console.log(ar);
   console.info("table width:", width);
   console.info("table height:", length);
+  console.info("header count:", headers.length);
 
   if (headers !== null) {
     theTable += "<tr>";
@@ -20,7 +21,7 @@ function table_gen(ar, headers = null) {
     theTable += "</tr>";
   }
 
-  if (headers.length = width) {
+  if (headers.length == width) {
     console.info("horizontal data format");
     for (var j = 0; j < length; j++) {
       theTable += "<tr>";
