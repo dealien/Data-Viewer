@@ -43,13 +43,13 @@ function table_gen(ar, headers = null) {
       theTable += "<tr>";
       for (var k = 0; k < length; k++) {
         if (headers !== null) {
-          theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
+          theTable += "<td id='" + headers[0][j] + "'>" + ar[j][k] + "</td>";
         } else {
-          theTable += "<td>" + ar[k][j] + "</td>";
+          theTable += "<td>" + ar[j][k] + "</td>";
         }
         console.group();
         console.info("row " + (k + 1) + ", column " + (j + 1));
-        console.info(ar[k][j]);
+        console.info(ar[j][k]);
         console.groupEnd();
       }
       theTable += "</tr>";
