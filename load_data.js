@@ -21,6 +21,7 @@ function table_gen(ar, headers = null) {
   }
 
   if (headers.length = width) {
+    console.info("horizontal data format");
     for (var j = 0; j < length; j++) {
       theTable += "<tr>";
       for (var k = 0; k < width; k++) {
@@ -37,6 +38,7 @@ function table_gen(ar, headers = null) {
       theTable += "</tr>";
     }
   } else {
+    console.info("vertical data format");
     for (var j = 0; j < width; j++) {
       theTable += "<tr>";
       for (var k = 0; k < length; k++) {
