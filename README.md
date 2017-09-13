@@ -9,14 +9,6 @@ Data can either be formatted vertically, where each sub-array represents a colum
 ### Vertically
 ```json
 {
-  "headers": [
-    [
-      "Student", "Age"
-    ],
-    [
-      "Student ID number", "Age of each student in days"
-    ]
-  ],
   "data": [
     [
       1,
@@ -39,14 +31,6 @@ Data can either be formatted vertically, where each sub-array represents a colum
 ### Horizontally
 ```json
 {
-  "headers": [
-    [
-      "Student", "Age"
-    ],
-    [
-      "Student ID number", "Age of each student in days"
-    ]
-  ],
   "data": [
     [1, 6388],
     [2, 6367],
