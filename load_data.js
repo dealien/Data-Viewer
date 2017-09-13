@@ -1,5 +1,6 @@
 var debug_mode = true;
 var students;
+var data;
 var theTable = "";
 
 function table_gen(ar, headers = null) {
@@ -77,9 +78,10 @@ function table_gen(ar, headers = null) {
 function load_data() {
   console.log("students", students);
   $(".output-box").html(table_gen(students.data, students.headers));
+  $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + students.info.title + '</h1><br><div class="tooltip-wrapper"><a id="tooltip-link" href="' + students.info.source_url '">' + students.info.source + '</a></div>')
 }
 
-document.onload = $.getJSON("student_data_v.json", function(loaded_data) {
+document.onload = $.getJSON("student_data.json", function(loaded_data) {
   console.log(loaded_data);
   students = loaded_data;
   load_data();
