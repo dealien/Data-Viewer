@@ -85,7 +85,7 @@ function load_data(json_data) {
   }
 }
 
-// document.onload = $.getJSON("config.json", function(loaded_data) {
+// document.onload = $.getJSON("sample_configs/config.json", function(loaded_data) {
 //   console.log(loaded_data);
 //   config = loaded_data;
 //   load_data();
