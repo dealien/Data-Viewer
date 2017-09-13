@@ -1,6 +1,5 @@
 var debug_mode = true;
-var students;
-var data;
+var config;
 var theTable = "";
 
 function table_gen(ar, headers = null) {
@@ -76,13 +75,13 @@ function table_gen(ar, headers = null) {
 }
 
 function load_data() {
-  console.log("students", students);
-  $(".output-box").html(table_gen(students.data, students.headers));
-  $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + students.info.title + '</h1><br><div class="tooltip-wrapper"><a id="tooltip-link" href="' + students.info.source_url + '">' + students.info.source + '</a></div>')
+  console.log("config", config);
+  $(".output-box").html(table_gen(config.data, config.headers));
+  $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><br><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
 }
 
-document.onload = $.getJSON("student_data.json", function(loaded_data) {
+document.onload = $.getJSON("config.json", function(loaded_data) {
   console.log(loaded_data);
-  students = loaded_data;
+  config = loaded_data;
   load_data();
 });
