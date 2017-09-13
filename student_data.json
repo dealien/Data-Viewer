@@ -1,4 +1,10 @@
 {
+  "info":
+  {
+    "title": "Student Ages",
+    "source": "Source: Statistics Class",
+    "source_url": ""
+  },
   "headers": [
     [
       "Student", "Age"
