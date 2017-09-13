@@ -27,8 +27,7 @@ function table_gen(ar, headers = null) {
         theTable += "<tr>";
         for (var k = 0; k < width; k++) {
           theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
-          console.group();
-          console.info("row " + (j + 1) + ", column " + (k + 1));
+          console.group("row " + (j + 1) + ", column " + (k + 1));
           console.info(ar[j][k]);
           console.groupEnd();
         }
