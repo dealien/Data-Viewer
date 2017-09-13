@@ -77,7 +77,11 @@ function table_gen(ar, headers = null) {
 function load_data() {
   console.log("config", config);
   $(".output-box").html(table_gen(config.data, config.headers));
-  $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><br><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+  if (config.info.hasOwnProperty('source')) {
+    $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+  } else {
+    $("#title-placeholder").replaceWith('<h1>' + config.info.title + '</h1>')
+  }
 }
 
 document.onload = $.getJSON("config.json", function(loaded_data) {
