@@ -74,14 +74,38 @@ function table_gen(ar, headers = null) {
   return theTable;
 }
 
-function load_data() {
+function load_data(json_data) {
+  config = json_data;
   console.log("config", config);
   $(".output-box").html(table_gen(config.data, config.headers));
-  $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><br><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+  if (config.info.hasOwnProperty('source')) {
+    $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+  } else {
+    $("#title-placeholder").replaceWith('<h1>' + config.info.title + '</h1>')
+  }
 }
 
-document.onload = $.getJSON("config.json", function(loaded_data) {
-  console.log(loaded_data);
-  config = loaded_data;
-  load_data();
-});
+// document.onload = $.getJSON("config.json", function(loaded_data) {
+//   console.log(loaded_data);
+//   config = loaded_data;
+//   load_data();
+// });
+
+
+
+// Load JSON from file
+
+function import_file() {
+  var files = document.getElementById('selectFiles').files;
+  console.log(files);
+  if (files.length <= 0 || files.length > 1) {
+    return false;
+  }
+  var fr = new FileReader();
+  fr.onload = function(e) {
+    var d = JSON.parse(e.target.result);
+    load_data(d);
+  }
+
+  fr.readAsText(files.item(0));
+};
