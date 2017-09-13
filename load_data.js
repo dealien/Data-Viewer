@@ -71,7 +71,7 @@ function table_gen(ar, headers = null) {
   theTable += "</table>";
   console.timeEnd("time to load");
   console.groupCollapsed("theTable");
-  console.log("theTable", theTable);
+  console.log("theTable:", theTable);
   console.groupEnd();
   return theTable;
 }
