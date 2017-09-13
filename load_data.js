@@ -14,43 +14,55 @@ function table_gen(ar, headers = null) {
   console.info("header count:", headers.length);
 
   if (headers !== null) {
-    theTable += "<tr>";
-    for (var j = 0; j < width; j++) {
-      theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
-    }
-    theTable += "</tr>";
-  }
+    if (headers.length == width) {
+      console.info("horizontal data format");
 
-  if (headers.length == width) {
-    console.info("horizontal data format");
+      theTable += "<tr>";
+      for (var j = 0; j < width; j++) {
+        theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
+      }
+      theTable += "</tr>";
+
+      for (var j = 0; j < height; j++) {
+        theTable += "<tr>";
+        for (var k = 0; k < width; k++) {
+          theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
+          console.group();
+          console.info("row " + (j + 1) + ", column " + (k + 1));
+          console.info(ar[j][k]);
+          console.groupEnd();
+        }
+        theTable += "</tr>";
+      }
+    } else {
+      console.info("vertical data format");
+
+      theTable += "<tr>";
+      for (var j = 0; j < height; j++) {
+        theTable += "<th class='tooltip' title='" + headers[1][j] + "'>" + headers[0][j] + "</th>";
+      }
+      theTable += "</tr>";
+
+      for (var j = 0; j < width; j++) {
+        theTable += "<tr>";
+        for (var k = 0; k < height; k++) {
+          theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
+          console.group();
+          console.info("row " + (k + 1) + ", column " + (j + 1));
+          console.info(ar[k][j]);
+          console.groupEnd();
+        }
+        theTable += "</tr>";
+      }
+    }
+  } else {
     for (var j = 0; j < height; j++) {
       theTable += "<tr>";
       for (var k = 0; k < width; k++) {
-        if (headers !== null) {
-          theTable += "<td id='" + headers[0][k] + "'>" + ar[j][k] + "</td>";
-        } else {
-          theTable += "<td>" + ar[j][k] + "</td>";
-        }
+        theTable += "<td>" + ar[j][k] + "</td>";
         console.group();
         console.info("row " + (j + 1) + ", column " + (k + 1));
         console.info(ar[j][k]);
-        console.groupEnd();
-      }
-      theTable += "</tr>";
-    }
-  } else {
-    console.info("vertical data format");
-    for (var j = 0; j < width; j++) {
-      theTable += "<tr>";
-      for (var k = 0; k < height; k++) {
-        if (headers !== null) {
-          theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
-        } else {
-          theTable += "<td>" + ar[k][j] + "</td>";
-        }
-        console.group();
-        console.info("row " + (k + 1) + ", column " + (j + 1));
-        console.info(ar[k][j]);
         console.groupEnd();
       }
       theTable += "</tr>";
