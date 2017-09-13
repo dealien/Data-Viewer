@@ -2,11 +2,13 @@
 
 [Link to the explorer](https://dealien.github.io/Data-Viewer/)
 
-## Data Format
+## Config File
+
+### Data Format
 
 Data can either be formatted vertically, where each sub-array represents a column of data in the table, or horizontally, where each sub-array represents one row of data in the table.
 
-### Vertically
+#### Vertical Data Format
 ```json
 {
   "data": [
@@ -16,7 +18,7 @@ Data can either be formatted vertically, where each sub-array represents a colum
 }
 ```
 
-### Horizontally
+#### Horizontal Data Format
 ```json
 {
   "data": [
@@ -28,3 +30,5 @@ Data can either be formatted vertically, where each sub-array represents a colum
   ]
 }
 ```
+
+### Additional Info
