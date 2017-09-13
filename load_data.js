@@ -40,9 +40,9 @@ function table_gen(ar, headers = null) {
     }
   } else {
     console.info("vertical data format");
-    for (var j = 0; j < height; j++) {
+    for (var j = 0; j < width; j++) {
       theTable += "<tr>";
-      for (var k = 0; k < width; k++) {
+      for (var k = 0; k < height; k++) {
         if (headers !== null) {
           theTable += "<td id='" + headers[0][j] + "'>" + ar[k][j] + "</td>";
         } else {
