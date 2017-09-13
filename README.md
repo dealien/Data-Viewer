@@ -10,20 +10,8 @@ Data can either be formatted vertically, where each sub-array represents a colum
 ```json
 {
   "data": [
-    [
-      1,
-      2,
-      3,
-      4,
-      5
-    ],
-    [
-      6388,
-      6367,
-      6500,
-      6635,
-      6312
-    ]
+    [1, 2, 3, 4, 5],
+    [6388, 6367, 6500, 6635, 6312]
   ]
 }
 ```
