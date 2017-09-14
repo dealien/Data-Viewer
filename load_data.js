@@ -80,14 +80,19 @@ function load_data(json_data = null) {
   }
   console.log("config", config);
   $(".output-box").html(table_gen(config.data, config.headers));
-  if (config.info.hasOwnProperty('source')) {
-    $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+  if (config.info.hasOwnProperty('title')) {
+    if (config.info.hasOwnProperty('source')) {
+      $("#title-placeholder").replaceWith('<h1 class="tooltip" data-tooltip-content="#tooltip-link">' + config.info.title + '</h1><div class="tooltip-wrapper"><a id="tooltip-link" href="' + config.info.source_url + '">' + config.info.source + '</a></div>')
+    } else {
+      $("#title-placeholder").replaceWith('<h1>' + config.info.title + '</h1>')
+    }
+    document.title = config.info.title + " | Data Viewer";
   } else {
-    $("#title-placeholder").replaceWith('<h1>' + config.info.title + '</h1>')
+    $("#title-placeholder").replaceWith('<h1>Loaded data</h1>')
   }
 }
 
-// Enables for development purposes
+// Comment out unless being used for development purposes
 // document.onload = $.getJSON("sample_configs/config.json", function(loaded_data) {
 //   console.log(loaded_data);
 //   config = loaded_data;
