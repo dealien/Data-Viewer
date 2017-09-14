@@ -96,7 +96,7 @@ function load_data(json_data = null) {
 
 // Load JSON from file
 function import_file() {
-  var files = document.getElementById('selectFiles').files;
+  var files = document.getElementById('file').files;
   console.log(files);
   if (files.length <= 0 || files.length > 1) {
     return false;
