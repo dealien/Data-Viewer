@@ -88,12 +88,11 @@ function load_data(json_data = null) {
 }
 
 // Enables for development purposes
-document.onload = $.getJSON("sample_configs/config.json", function(loaded_data) {
-  console.log(loaded_data);
-  config = loaded_data;
-  load_data();
-});
-
+// document.onload = $.getJSON("sample_configs/config.json", function(loaded_data) {
+//   console.log(loaded_data);
+//   config = loaded_data;
+//   load_data();
+// });
 
 // Load JSON from file
 function import_file() {
