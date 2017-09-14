@@ -1,0 +1,152 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+body {
+    font-family: Montserrat, sans-serif;
+    background: #a0b9d2;
+}
+
+.tooltip-wrapper {
+    display: none;
+}
+
+a#tooltip-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    display: inline-block;
+    width: auto;
+    margin-top: 0px;
+}
+
+.in {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 1;
+}
+
+.out {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    opacity: 0;
+}
+
+.data-table {
+    background: #34495E;
+    color: #fff;
+    border-radius: .4em;
+    overflow: hidden;
+    padding: 0 2em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    margin: 1em 0;
+    min-width: 300px;
+}
+
+.data-table tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-color: #46637f;
+}
+
+.data-table th {
+    display: none;
+}
+
+.data-table td {
+    display: block;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    margin: .5em 1em;
+}
+
+.data-table th,
+.data-table td:before {
+    color: #dd5;
+}
+
+.data-table td:first-child {
+    padding-top: .5em;
+}
+
+.data-table td:last-child {
+    padding-bottom: .5em;
+}
+
+.data-table td:before {
+    content: attr(data-th) ": ";
+    font-weight: bold;
+    width: 6.5em;
+    display: inline-block;
+}
+
+@media (min-width: 480px) {
+    .data-table td:before {
+        display: none;
+    }
+}
+
+@media (min-width: 480px) {
+    .data-table th,
+    .data-table td {
+        display: table-cell;
+        padding: .25em .5em;
+    }
+    .data-table th:first-child,
+    .data-table td:first-child {
+        padding-left: 0;
+    }
+    .data-table th:last-child,
+    .data-table td:last-child {
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 480px) {
+    .data-table th,
+    .data-table td {
+        padding: .5em !important;
+    }
+}
+
+.import-box {
+    background: #000;
+    color: #fff;
+}
+
+.importfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.importfile+label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.importfile:focus+label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.importfile:focus+label,
+.importfile+label:hover {
+    background-color: red;
+}
